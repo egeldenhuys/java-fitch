@@ -11,7 +11,12 @@ public class JavaFitchUnitTest {
 	public int assertsPassedSubTest;
 	public int assertsCountSubTest;
 	public boolean testResult = true;
+	public String name = "";
 
+	public JavaFitchUnitTest(String n) {
+		name = n;
+	}
+	
 	public boolean run() {
 		System.out.println("JavaFitchUnitTest::run() not implemented!");
 
