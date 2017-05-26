@@ -16,7 +16,7 @@ public class JavaFitchUnitTest {
 	public JavaFitchUnitTest(String n) {
 		name = n;
 	}
-	
+
 	public boolean run() {
 		System.out.println("JavaFitchUnitTest::run() not implemented!");
 
@@ -88,8 +88,8 @@ public class JavaFitchUnitTest {
 		return result;
 	}
 
-	public <T> boolean assertEquals(T expected, T received, int tracer) {
-		tracer++;
+	public <T> boolean assertEquals(T expected, T received) {
+		int tracer = Thread.currentThread().getStackTrace()[2].getLineNumber();
 
 		assertsCount++;
 		assertsCountSubTest++;
@@ -101,26 +101,6 @@ public class JavaFitchUnitTest {
 		} else {
 			System.out.println();
 			System.out.println("++++ ASSERT FAIL on line " + tracer + " ++++");
-			System.out.println("Expected: \n" + expected.toString());
-			System.out.println("Received: \n" + received.toString() + "\n");
-			System.out.println("++++++++++++++++++++++");
-
-			return false;
-		}
-	}
-
-	public <T> boolean assertEquals(T expected, T received) {
-
-		assertsCount++;
-		assertsCountSubTest++;
-
-		if (received.equals(expected)) {
-			assertsPassed++;
-			assertsPassedSubTest++;
-			return true;
-		} else {
-			System.out.println();
-			System.out.println("++++ ASSERT FAIL ++++");
 			System.out.println("Expected: \n" + expected.toString());
 			System.out.println("Received: \n" + received.toString() + "\n");
 			System.out.println("++++++++++++++++++++++");
