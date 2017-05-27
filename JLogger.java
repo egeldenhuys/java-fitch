@@ -1,4 +1,4 @@
-public class JavaFitchLogger {
+public class JLogger {
 
     public static final int DEBUG = 0;
     public static final int ERROR = 1;
@@ -6,26 +6,17 @@ public class JavaFitchLogger {
     public static final int INFO = 3;
     public static final int WARN = 4;
 
-    public int logLevel = 0;
-    public String name = "";
+    public static int logLevel = 0;
 
-    public JavaFitchLogger(int defaultLevel) {
-        logLevel = defaultLevel;
-    }
+    public static void log(int level, String msg) {
 
-    public JavaFitchLogger(String n, int defaultLevel) {
-        logLevel = defaultLevel;
-        name = n;
-    }
-
-    public void log(int level, String msg) {
         if (logLevel <= level) {
             int callersLineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
             logTemplate(level, msg, callersLineNumber);
         }
     }
 
-    public void logTemplate(int level, String msg, int line) {
+    public static void logTemplate(int level, String msg, int line) {
         // TODO: Use a map?
 
         String typeName = "";
@@ -33,9 +24,10 @@ public class JavaFitchLogger {
         if (level == DEBUG) {
             typeName = "DEBUG";
         } else if (level == ERROR) {
+            // NOTE: Not all terminals support
             typeName = "\u001B[31mERROR\u001B[39;49m";
         }
 
-        System.out.println("[" + typeName + "][" + line + "][" + name + "] " + msg);
+        System.out.println("[" + typeName + "][" + line + "] " + msg);
     }
 }
