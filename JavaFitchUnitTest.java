@@ -4,12 +4,18 @@
 */
 public class JavaFitchUnitTest {
 
-	public int testsPassed;
-	public int testsCount;
-	public int assertsPassed;
-	public int assertsCount;
-	public int assertsPassedSubTest;
-	public int assertsCountSubTest;
+	public static String TITLE_COLOUR = "\u001B[38;5;44m";
+	public static String TITLE_COLOUR_2 = "\u001B[38;5;202m";
+	public static String GREEN = "\u001B[32m";
+	public static String RED = "\u001B[31m";
+	public static String RESET = "\u001B[39;49m";
+
+	public int testsPassed = 0;
+	public int testsCount = 0;
+	public int assertsPassed = 0;
+	public int assertsCount = 0;
+	public int assertsPassedSubTest = 0;
+	public int assertsCountSubTest = 0;
 	public boolean testResult = true;
 	public String name = "";
 
@@ -24,6 +30,7 @@ public class JavaFitchUnitTest {
 	}
 
 	public void printHeader(String title) {
+		title = TITLE_COLOUR_2 + title + RESET;
 		assertsCountSubTest = 0;
 		assertsPassedSubTest = 0;
 
@@ -40,12 +47,11 @@ public class JavaFitchUnitTest {
 
 	public boolean end_test_case(boolean result, boolean subResult) {
 		printSubTestFooter(subResult);
+		testResult = testResult & subResult;
 		return result & subResult;
 	}
 
 	public void printFooter(String title, boolean result) {
-		testResult = testResult & result;
-
 		testsCount++;
 
 		if (result == true) {
@@ -80,9 +86,9 @@ public class JavaFitchUnitTest {
 		String result = "";
 
 		if (value == true) {
-			result = "PASS";
+			result = GREEN + "PASS" + RESET;
 		} else {
-			result = "FAIL";
+			result = RED + "FAIL" + RESET;
 		}
 
 		return result;
@@ -100,10 +106,10 @@ public class JavaFitchUnitTest {
 			return true;
 		} else {
 			System.out.println();
-			System.out.println("++++ ASSERT FAIL on line " + tracer + " ++++");
+			System.out.println(RED + "++++ ASSERT FAIL on line " + tracer + " ++++" + RESET);
 			System.out.println("Expected: \n" + expected.toString());
 			System.out.println("Received: \n" + received.toString() + "\n");
-			System.out.println("++++++++++++++++++++++");
+			System.out.println(RED + "++++++++++++++++++++++" + RESET);
 
 			return false;
 		}
@@ -120,10 +126,10 @@ public class JavaFitchUnitTest {
 			return true;
 		} else {
 			System.out.println();
-			System.out.println("++++ ASSERT FAIL on line " + tracer + " ++++");
+			System.out.println(RED + "++++ ASSERT FAIL on line " + tracer + " ++++" + RESET);
 			System.out.println("Expected: \n" + "null");
 			System.out.println("Received: \n" + received.toString() + "\n");
-			System.out.println("++++++++++++++++++++++");
+			System.out.println(RED + "++++++++++++++++++++++" + RESET);
 
 			return false;
 		}
@@ -140,10 +146,10 @@ public class JavaFitchUnitTest {
 			return true;
 		} else {
 			System.out.println();
-			System.out.println("++++ ASSERT FAIL ++++");
+			System.out.println(RED + "++++ ASSERT FAIL ++++" + RESET);
 			System.out.println("Expected: \n" + "null");
 			System.out.println("Received: \n" + received.toString() + "\n");
-			System.out.println("++++++++++++++++++++++");
+			System.out.println(RED + "++++++++++++++++++++++" + RESET);
 
 			return false;
 		}

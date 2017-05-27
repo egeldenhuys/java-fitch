@@ -22,6 +22,10 @@ public class JLogger {
         log(level, "\n" + res);
     }
 
+    public static void log(int level, boolean msg) {
+        log(level, Boolean.toString(msg));
+    }
+
     public static void log(int level, int msg) {
         log(level, Integer.toString(msg));
     }

@@ -8,6 +8,12 @@ public class JavaFitch {
 
 	public static ArrayList<JavaFitchUnitTest> testList = new ArrayList<JavaFitchUnitTest>();
 
+	public static String TITLE_COLOUR = "\u001B[38;5;44m";
+	public static String TITLE_COLOUR_2 = "\u001B[38;5;202m";
+	public static String GREEN = "\u001B[32m";
+	public static String RED = "\u001B[31m";
+	public static String RESET = "\u001B[39;49m";
+
 	static int testsCount = 0;
 	static int testsPassed = 0;
 	static int assertsCount = 0;
@@ -35,7 +41,7 @@ public class JavaFitch {
 			testList.get(i).assertsPassed, testList.get(i).assertsCount);
 		}
 
-		printFooter("OVERALL", result, testsPassed, testsCount, assertsPassed, assertsPassed);
+		printFooter("OVERALL", result, testsPassed, testsCount, assertsPassed, assertsCount);
 	}
 
 	public static void addSuite(JavaFitchUnitTest test) {
@@ -43,15 +49,17 @@ public class JavaFitch {
 	}
 
 	public static void printHeader(String title) {
-		System.out.println("XXXXXXXXX SUITE: " + title + " XXXXXXXXXX");
+		System.out.println("XXXXXXXXX SUITE: " + TITLE_COLOUR + title + RESET + " XXXXXXXXXX");
 	}
 
 	public static void printFooter(String title, boolean result, int testsCount, int testsPassed, int assertsCount, int assertsPassed) {
-		System.out.println("________ SUMMARY for " + title + " _________");
+		System.out.println("________ SUMMARY for " + TITLE_COLOUR + title + RESET + " _________");
 		System.out.println(resultToString(result));
 		System.out.println("tests: " + testsPassed + " passed | " + testsCount);
 		System.out.println("assertions: " + assertsPassed + " passed | " + assertsCount);
 		System.out.println("_____________________________________________");
+
+
 	}
 
 	public static String resultToString(boolean value) {
@@ -59,9 +67,9 @@ public class JavaFitch {
 		String result = "";
 
 		if (value == true) {
-			result = "PASS";
+			result = GREEN + "PASS" + RESET;
 		} else {
-			result = "FAIL";
+			result = RED + "FAIL" + RESET;
 		}
 
 		return result;
