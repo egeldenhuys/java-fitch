@@ -8,6 +8,10 @@ public class JLogger {
 
     public static int logLevel = 0;
 
+    public static void log(int level, int msg) {
+        log(level, Integer.toString(msg));
+    }
+
     public static void log(int level, String msg) {
 
         if (logLevel <= level) {
@@ -26,6 +30,8 @@ public class JLogger {
         } else if (level == ERROR) {
             // NOTE: Not all terminals support
             typeName = "\u001B[31mERROR\u001B[39;49m";
+        } else if (level == WARN) {
+            typeName = "\u001B[31mWARN\u001B[39;49m";
         }
 
         System.out.println("[" + typeName + "][" + line + "] " + msg);
