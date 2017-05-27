@@ -8,6 +8,20 @@ public class JLogger {
 
     public static int logLevel = 0;
 
+    public static void log(int level, int[][] msg) {
+
+        String res = "";
+
+        for (int i = 0; i < msg.length; i++) {
+            for (int j = 0; j < msg.length; j++) {
+                res += Integer.toString(msg[i][j]) + " ";
+            }
+            res += "\n";
+        }
+
+        log(level, "\n" + res);
+    }
+
     public static void log(int level, int msg) {
         log(level, Integer.toString(msg));
     }
