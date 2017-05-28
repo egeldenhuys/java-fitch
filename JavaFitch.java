@@ -1,10 +1,12 @@
 /*
-This class constructs all test suites and runs them
+This class manages test suites and collects their results
 */
 
 import java.util.*;
 
 public class JavaFitch {
+
+	public static final String VERSION = "v0.1.0";
 
 	public static ArrayList<JavaFitchUnitTest> testList = new ArrayList<JavaFitchUnitTest>();
 

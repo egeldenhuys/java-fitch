@@ -1,7 +1,7 @@
 /*
-	Class that defines the base functions for unit tests
-	Such as the layout
+Defines the base functions for a test suite
 */
+
 public class JavaFitchUnitTest {
 
 	public static String TITLE_COLOUR = "\u001B[38;5;44m";

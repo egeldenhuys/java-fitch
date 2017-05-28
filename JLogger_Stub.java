@@ -1,6 +1,4 @@
-// Stub file for submitting
-// Used by black-fitch for debugging
-// Side effect of using black-fitch libraries for production code
+// Stub file for submitting if JLogger was used in production code
 
 public class JLogger {
     public static final int DEBUG = 0;
